@@ -9,3 +9,16 @@ spec:
    name : terraform-app
   path : ./terraform
   prune: true
+
+---
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: terraform-nginx
+spec:
+  path: ./terraform
+  approvePlan: ""
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: terraform-app
