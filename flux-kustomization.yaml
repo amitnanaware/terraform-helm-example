@@ -6,6 +6,6 @@ metadata:
 spec:
   interval: 10m
   sourceRef:
-    kind: GitRepository
-	name : terraform-repo
-path : ./
+   kind: GitRepository
+   name : terraform-repo
+  path : ./
