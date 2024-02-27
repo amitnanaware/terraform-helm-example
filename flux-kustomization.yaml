@@ -1,4 +1,4 @@
-apiVersion : source.toolkit.fluxcd.io/v1beta1
+apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
 	name: terraform
@@ -6,6 +6,6 @@ metadata:
 spec:
 	interval: 10m
 	sourceRef:
-	  kind: GitRepository
-	  name : terraform-repo
+		kind: GitRepository
+		name : terraform-repo
 	path : ./
