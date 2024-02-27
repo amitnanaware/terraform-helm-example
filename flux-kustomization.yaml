@@ -7,5 +7,6 @@ spec:
   interval: 10m
   sourceRef:
    kind: GitRepository
-   name : terraform-repo
+   name : terraform-app
   path : ./
+  prune: true
