@@ -2,37 +2,37 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: terraform-app-ex
-  namespace: dev2
+  namespace: flux-system
 spec:
   interval: 10m
   url: https://github.com/amitnanaware/terraform-helm-example
   ref:
     branch: test-argocd
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: terraform
+  namespace: flux-system
+spec:
+  interval: 10m
+  sourceRef:
+   kind: GitRepository
+   name : terraform-app-ex
+  path : ./terraform
+  prune: true
+
 #---
-#apiVersion: kustomize.toolkit.fluxcd.io/v1
-#kind: Kustomization
+#apiVersion: infra.contrib.fluxcd.io/v1alpha1
+#kind: Terraform
 #metadata:
-#  name: terraform
+#  name: terraform-nginx
 #  namespace: dev2
 #spec:
-#  interval: 10m
+#  path: ./terraform
+#  approvePlan: ""
+#  interval: 1m
 #  sourceRef:
-#   kind: GitRepository
-#   name : terraform-app-ex
-#  path : ./terraform
-#  prune: true
-
----
-apiVersion: infra.contrib.fluxcd.io/v1alpha1
-kind: Terraform
-metadata:
-  name: terraform-nginx
-  namespace: dev2
-spec:
-  path: ./terraform
-  approvePlan: ""
-  interval: 1m
-  sourceRef:
-    kind: GitRepository
-    name: terraform-app-ex
-    namespace: dev2
+#    kind: GitRepository
+#    name: terraform-app-ex
+#    namespace: dev2
