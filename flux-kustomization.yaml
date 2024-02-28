@@ -22,17 +22,17 @@ spec:
   path : ./terraform
   prune: true
 
-#---
-#apiVersion: infra.contrib.fluxcd.io/v1alpha1
-#kind: Terraform
-#metadata:
-#  name: terraform-nginx
-#  namespace: dev2
-#spec:
-#  path: ./terraform
-#  approvePlan: ""
-#  interval: 1m
-#  sourceRef:
-#    kind: GitRepository
-#    name: terraform-app-ex
-#    namespace: dev2
+---
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: terraform-nginx
+  namespace: dev2
+spec:
+  path: ./terraform
+  approvePlan: ""
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: terraform-app
+    namespace: dev2
